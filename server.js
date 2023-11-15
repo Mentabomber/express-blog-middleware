@@ -1,11 +1,14 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const postsRouter = require("./routers/posts");
+const authRouter = require("./routers/auth");
 const multer = require("multer");
+const auth = require("./controllers/auth");
+const bodyParser = require('body-parser');
 
 dotenv.config();
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 
 const app = express();
 
@@ -14,8 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
-
+app.use("/", authRouter)
 app.use("/posts", postsRouter);
+
 
 app.listen(port, () => {
     console.log(`Example app listening on http://localhost:${port}`);

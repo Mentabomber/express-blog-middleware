@@ -49,10 +49,10 @@ function create(req, res){
             const html = [`
                 <h1>Creazione nuovo post</h1>
             `];
-            res.send(html.join(""));
+             res.send(html.join(""));
         },
     })
-    res.status(406).send(`Wrong request`);
+    // res.status(406).send(`Wrong request`);
 }
 function store(req, res){
     const newPost = {
