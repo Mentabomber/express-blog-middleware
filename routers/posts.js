@@ -3,13 +3,16 @@ const router = express.Router();
 const postsController = require("../controllers/posts");
 const { withAuth } = require("../authentication/authenticate");
 const multer = require("multer");
+const pswCheckMiddleware = require("../middlewares/pswCheck")
+
+router.use(pswCheckMiddleware);
 
 
 const uploader = multer({dest: "public/assets/imgs/posts"})
 
 router.get("/", postsController.index);
 
-router.post("/", withAuth, uploader.single("image"),postsController.store);
+router.post("/", uploader.single("image"), postsController.store);
 
 router.get("/create", postsController.create);
 

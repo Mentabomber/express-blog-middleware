@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports = function (req, res, next) {
     const bearerToken = req.header("Authorization");
-
+    console.log(bearerToken);
     if (!bearerToken){
         return res.status(401).send("Token mancante");
     }

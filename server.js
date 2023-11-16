@@ -3,8 +3,7 @@ const dotenv = require("dotenv");
 const postsRouter = require("./routers/posts");
 const authRouter = require("./routers/auth");
 const multer = require("multer");
-const auth = require("./controllers/auth");
-const bodyParser = require('body-parser');
+
 
 dotenv.config();
 
